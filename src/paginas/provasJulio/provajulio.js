@@ -1,6 +1,10 @@
 import { useRef, useState } from "react";
-import { Container, TextField, Button, Typography, List, ListItem, Alert, Box } from "@mui/material";
+import { Container, TextField, Button, Typography, List, Alert, Box, Grid2 as Grid } from "@mui/material";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import BasicBars from "./components/barchart";
+import Forms from "./components/forms";
+import DataTable from "./components/table";
+import ImageCard from "./components/imagecard";
 
 export default function ProvaJulio() {
     const [lista, setLista] = useState([]);
@@ -9,6 +13,36 @@ export default function ProvaJulio() {
     const [ascii, setAscii] = useState('');
     const [alerta, setAlerta] = useState('');
     const inputNome = useRef();
+    
+    const groups = [
+        'Pao',
+        'Cafe'
+    ]
+
+    const datas = [
+        [0,1],
+        [20,11],
+        [5,2],
+        [10,21],
+        [34,5],
+        [25,3],
+        [6,13],
+        [7,4],
+    ]
+
+    const cards = [
+        {
+          title: 'Gatito',
+          description: 'Dançante',
+        },
+        {
+          title: 'Creeper',
+          description: 'Do Balacobaco',
+          image: 'https://media1.giphy.com/media/hIzEUA4a5hGDHRgy9P/giphy.gif',
+          alt: 'Charged Creeper'
+        },
+        {},
+    ]
 
     const adicionaNome = () => {
         const nome = inputNome.current.value;
@@ -67,6 +101,9 @@ export default function ProvaJulio() {
 
     return (
         <Container sx={{ mt: 4 }}>
+            <Box mt={2}>
+                {alerta && <Alert severity="error">{alerta}</Alert>}
+            </Box>
             <Box mb={2}>
                 <TextField
                     inputRef={inputNome}
@@ -112,9 +149,22 @@ export default function ProvaJulio() {
                     </LineChart>
                 </ResponsiveContainer>
             </Box>
-            <Box mt={2}>
-                {alerta && <Alert severity="error">{alerta}</Alert>}
+            <Box mb={2}>
+                <BasicBars groups={groups} datas={datas} />
             </Box>
+            <Box mb={2}>
+                <Forms />
+            </Box>
+            <Box mb={2}>
+                <DataTable />
+            </Box>
+            <Grid container marginTop={10} marginBottom={10} display={'flex'} columnSpacing={1} rowSpacing={1} justifyContent={'center'}>
+            {cards.map((e,i) => {
+                return(
+                    <ImageCard key={i} title={e.title} description={e.description} image={e.image} alt={e.alt} />
+                )
+            })}
+            </Grid>
         </Container>
     );
 }
