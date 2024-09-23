@@ -2,7 +2,7 @@
 
 npm install
 ou
-npm install react-bootstrap bootstrap @mui/material @emotion/react @emotion/styled @mui/icons-material react-router-dom recharts@alpha
+npm install react-bootstrap bootstrap @mui/material @emotion/react @emotion/styled @mui/icons-material react-router-dom recharts@alpha express
 
 # Getting Started with Create React App
 
