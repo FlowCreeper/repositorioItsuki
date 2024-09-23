@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Container, TextField, Button, Typography, List, Alert, Box, Grid2 as Grid } from "@mui/material";
+import { Container, TextField, Button, Typography, List, Alert, Box, Grid2 as Grid, Input } from "@mui/material";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import BasicBars from "./components/barchart";
 import Forms from "./components/forms";
@@ -13,6 +13,7 @@ export default function ProvaJulio() {
     const [ascii, setAscii] = useState('');
     const [alerta, setAlerta] = useState('');
     const inputNome = useRef();
+    const inputNumero = useRef();
     
     const groups = [
         'Pao',
@@ -99,6 +100,15 @@ export default function ProvaJulio() {
         }
     };
 
+    const somaNumeros = () => {
+        if(inputNumero.current.value != '')
+        setContador(parseInt(inputNumero.current.value) + contador)
+    }
+
+    const limpaInput = () => {
+        inputNumero.current.value = ''
+    }
+
     return (
         <Container sx={{ mt: 4 }}>
             <Box mt={2}>
@@ -123,13 +133,20 @@ export default function ProvaJulio() {
                 </List>
             </Box>
             <Box mb={2}>
+                <Typography variant="h6">Contador: {contador}</Typography>
                 <Button variant="contained" onClick={contar}>Aumentar</Button>
-                <Button variant="contained" color="warning" onClick={zerar} sx={{ ml: 2 }}>Zerar</Button>
-                <Button variant="contained" color="error" onClick={diminuir} sx={{ ml: 2 }}>Diminuir</Button>
+                <Button variant="contained" color="warning" onClick={diminuir} sx={{ ml: 2 }}>Diminuir</Button>
+                <Button variant="contained" color="error" onClick={zerar} sx={{ ml: 2 }}>Zerar</Button>
                 <Button variant="contained" color="success" onClick={pontoSave} sx={{ ml: 2 }}>Registrar</Button>
             </Box>
             <Box mb={2}>
-                <Typography variant="h6">Contador: {contador}</Typography>
+                <TextField inputRef={inputNumero} label="Numero" variant="outlined" type="number"/>
+            </Box>
+            <Box mb={2}>
+                <Button variant="contained" onClick={somaNumeros}>Somar</Button>
+                <Button variant="contained" color="error" onClick={limpaInput} sx={{ ml: 2 }}>Limpar</Button>
+            </Box>
+            <Box mb={2}>
                 <Typography variant="h6">Valor ASCII: {ascii}</Typography>
                 <Button variant="contained" onClick={converterParaAscii}>Converter para ASCII</Button>
             </Box>
