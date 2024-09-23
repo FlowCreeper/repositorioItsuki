@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Container, TextField, Button, Typography, List, Alert, Box, Grid2 as Grid, Input } from "@mui/material";
+import { Container, TextField, Button, Typography, List, Alert, Box, Grid2 as Grid } from "@mui/material";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import BasicBars from "./components/barchart";
 import Forms from "./components/forms";
@@ -101,8 +101,7 @@ export default function ProvaJulio() {
     };
 
     const somaNumeros = () => {
-        if(inputNumero.current.value != '')
-        setContador(parseInt(inputNumero.current.value) + contador)
+        if(inputNumero.current.value !== '') { setContador(parseInt(inputNumero.current.value) + contador) }
     }
 
     const limpaInput = () => {
