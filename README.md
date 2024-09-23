@@ -1,3 +1,9 @@
+# Dependencias
+
+npm install
+ou
+npm install react-bootstrap bootstrap @mui/material @emotion/react @emotion/styled @mui/icons-material react-router-dom recharts@alpha
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,9 +74,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-### Dependencias
-
-npm install
-ou
-npm install react-bootstrap bootstrap @mui/material @emotion/react @emotion/styled @mui/icons-material react-router-dom recharts
